@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Engine</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Email Engine</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Connect Your Gmail Account</h2>
+                <a href="/auth" class="btn btn-primary">Connect with Gmail</a>
+            </div>
+        </div>
+        <div id="data" class="row mt-4">
+            <!-- Email data will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // Fetch and display email data
+        async function fetchEmailData() {
+            const response = await fetch('/emails/sync/YOUR_USER_ID'); // Replace with actual user ID
+            const result = await response.text();
+            document.getElementById('data').innerText = result;
+        }
+
+        fetchEmailData();
+    </script>
+</body>
+</html>
